@@ -2,9 +2,14 @@ package MAIN;
 
 public class Main_GUI {
     public static void main(String[] args) {
-        JFrame_Metodo AS=new JFrame_Metodo();
-        AS.setResizable(true);
-        AS.setLocationRelativeTo(null);
-        AS.setVisible(true);
+    	//Invocacion de clase
+        JFrame_Metodo startApplication=new JFrame_Metodo();
+        
+        //Propiedades par el ejecutable
+        startApplication.setResizable(true);
+        startApplication.setLocationRelativeTo(null);
+        
+        //Inicio de aplicacion
+        startApplication.setVisible(true);
     }
 }
