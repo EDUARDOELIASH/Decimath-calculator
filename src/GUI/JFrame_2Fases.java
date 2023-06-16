@@ -40,7 +40,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
 public class JFrame_2Fases extends JFrame {
-	int VAR,NR;
+	int nomVariable_indepent,numberRestriction;
 	private static final long serialVersionUID = 1L;
 	private ArrayList<JButton> Botones;
 	private ArrayList<JLabel> Xn;
@@ -61,9 +61,9 @@ public class JFrame_2Fases extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public JFrame_2Fases(final int NR, final int VAR) {
-		this.NR=NR;
-		this.VAR=VAR;
+	public JFrame_2Fases(final int numberRestriction, final int nomVariable_indepent) {
+		this.numberRestriction=numberRestriction;
+		this.nomVariable_indepent=nomVariable_indepent;
 		
 		Botones=new ArrayList<JButton>();
 		Xn=new ArrayList<>();
@@ -175,13 +175,13 @@ public class JFrame_2Fases extends JFrame {
 				int n = 0;
 				dato=true;
 				//Pasar Arraylist de Xn y Resultado a Arreglo Bidimensional
-				double[][] restriccionI = new double[NR][VAR+1];
+				double[][] restriccionI = new double[numberRestriction][nomVariable_indepent+1];
 				restriccionI=RecorrerArray(Coeficiente,Simbolo);
 				
 				//Simbolo logico por Restriccion
-				int[] simbolo = new int [NR];
+				int[] simbolo = new int [numberRestriction];
 				boolean simb=true;
-				for(int i=0;i<NR;i++) {
+				for(int i=0;i<numberRestriction;i++) {
 					JComboBox Sim = Simbolo.get(i);
 					if(Sim.getSelectedIndex()!=0) {
 						simbolo[i]=Sim.getSelectedIndex();
@@ -193,14 +193,14 @@ public class JFrame_2Fases extends JFrame {
 				}
 				
 				//Funcion Objetivo Campos
-				double [] vardecision=new double [VAR+1];
+				double [] nomVariable_indepentdecision=new double [nomVariable_indepent+1];
 				boolean FO=true;
-				for(int i=0;i<VAR;i++){
+				for(int i=0;i<nomVariable_indepent;i++){
 					JTextField ob = Objetivo.get(i);
 					try {
 						double verificacion=Double.parseDouble(ob.getText());
-						vardecision[i]=verificacion;
-						//System.out.println(vardecision[i]);
+						nomVariable_indepentdecision[i]=verificacion;
+						//System.out.println(nomVariable_indepentdecision[i]);
 					}
 					catch(Exception e) {
 						//System.out.println("Coeficiente no valido");
@@ -227,8 +227,8 @@ public class JFrame_2Fases extends JFrame {
 				
 				if(((n>0)&&(FO==true)&&(dato==true)&&(simb==true))){
 					//SOLO ENTRA SI YA CONSIGUIO LOS DATOS QUE REQUERIA, DE AQUI SIGUE LA TABLA
-					String [] SimbolosFN=new String [NR];
-					for(int i=0;i<NR;i++) {
+					String [] SimbolosFN=new String [numberRestriction];
+					for(int i=0;i<numberRestriction;i++) {
 						int A=simbolo[i];
 						switch(A) {
 							case 1: 	SimbolosFN[i]="<=";
@@ -239,13 +239,13 @@ public class JFrame_2Fases extends JFrame {
 								break;
 						}
 					}
-                                        restriccionI = ladoDerechoNN(restriccionI, VAR, NR, SimbolosFN);
+                                        restriccionI = ladoDerechoNN(restriccionI, nomVariable_indepent, numberRestriction, SimbolosFN);
 					dispose();
-					int Sigma=NR+VAR;
-                                        //System.out.println(NR + " " + VAR);
-					//double vardecision[], char OBJETIVO, double restriccionI[][],String SimboloFN[]
-					Datos2F siguiente=new Datos2F(vardecision,OBJETIVO,restriccionI,SimbolosFN,Sigma,NR,VAR);
-					siguiente.varHolguras();
+					int Sigma=numberRestriction+nomVariable_indepent;
+                                        //System.out.println(numberRestriction + " " + nomVariable_indepent);
+					//double nomVariable_indepentdecision[], char OBJETIVO, double restriccionI[][],String SimboloFN[]
+					Datos2F siguiente=new Datos2F(nomVariable_indepentdecision,OBJETIVO,restriccionI,SimbolosFN,Sigma,numberRestriction,nomVariable_indepent);
+					siguiente.varHolguras();//metod
                                         siguiente.despejarZ();
                                         siguiente.tabla2F();
 					//siguiente.leer();
@@ -276,18 +276,18 @@ public class JFrame_2Fases extends JFrame {
 				
 				 // Arreglo Bidimensional para Datos Simplex
 				
-				/*for(int i=0;i<NR;i++) {
-					for(int j=0;j<=VAR;j++) {
+				/*for(int i=0;i<numberRestriction;i++) {
+					for(int j=0;j<=nomVariable_indepent;j++) {
 					}
 				 }*/
 				
 				
 			}
                         
-                        private double[][] ladoDerechoNN(double[][] restriccionI, int nvar, int nrest, String[] simbolo){
-                            for (int i = 0; i<nrest; i++){
-                                if (restriccionI[i][nvar] < 0){
-                                for (int k = 0; k <=nvar; k++){ //Lado izquierdo
+                        private double[][] ladoDerechoNN(double[][] restriccionI, int nnomVariable_indepent, int numberRestrictionest, String[] simbolo){
+                            for (int i = 0; i<numberRestrictionest; i++){
+                                if (restriccionI[i][nnomVariable_indepent] < 0){
+                                for (int k = 0; k <=nnomVariable_indepent; k++){ //Lado izquierdo
                                     restriccionI[i][k] *= (-1);
                                 }
                                     switch (simbolo[i]){
@@ -307,18 +307,18 @@ public class JFrame_2Fases extends JFrame {
                         }
 
 			private double[][] RecorrerArray(ArrayList<JTextField> coeficiente, ArrayList<JComboBox> simbolo) {
-				double[][] restriccionI = new double[NR][VAR+1];
+				double[][] restriccionI = new double[numberRestriction][nomVariable_indepent+1];
 				int j=0;
 				//JOptionPane.showMessageDialog(null,coeficiente.size(),"",JOptionPane.INFORMATION_MESSAGE);
 				int i=0,k=0;
-				//for(int i=0;i<NR;i++) {
-					while(j<coeficiente.size()&&i<NR) {
+				//for(int i=0;i<numberRestriction;i++) {
+					while(j<coeficiente.size()&&i<numberRestriction) {
 						JTextField x = coeficiente.get(j);
 						//
 						//while(dato==false) {
 							try {
 								double verificacion=Double.parseDouble(x.getText());
-								if(k==VAR) {
+								if(k==nomVariable_indepent) {
 									restriccionI[i][k]=verificacion;
 									i++;
 									k=0;
@@ -387,8 +387,8 @@ public class JFrame_2Fases extends JFrame {
 		contentPane.add(Btn_Res);
 		Btn_Res.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-		/*Doc*/	//int NR=5;
-				for(int i=0;i<=NR;i++) {
+		/*Doc*/	//int numberRestriction=5;
+				for(int i=0;i<=numberRestriction;i++) {
 					//Posiciones
 					JPanel UY = new JPanel();
 					UY.setRequestFocusEnabled(false);
@@ -398,7 +398,7 @@ public class JFrame_2Fases extends JFrame {
 					UY.setOpaque(false);
 					UY.setLayout(new BorderLayout(0, 0));
 					
-					//Panel de VARIABLES
+					//Panel de nomVariable_indepentIABLES
 					JPanel newTabComponent = new JPanel();
 					//newTabComponent.setSize(new Dimension (50,50));
 					newTabComponent.setLayout(new FlowLayout());
@@ -429,17 +429,17 @@ public class JFrame_2Fases extends JFrame {
 					//NP.add(new JTextField("I'm tab " + tabCount));
 					//newTabComponent.add(R, getContentPane());
 					
-					//for(int j=0;j<VAR;j++) {
+					//for(int j=0;j<nomVariable_indepent;j++) {
 					//	newTabComponent.add(L);
 					//	Xn.add(L);
 					//	newTabComponent.add(J);
 					//	Coeficiente.add(J);
 					//}
 					
-					//Scroll Para n var
+					//Scroll Para n nomVariable_indepent
 					
 					
-					Variables(newTabComponent,UY,Res,i);
+					nomVariable_indepentiables(newTabComponent,UY,Res,i);
 					
 					
 					
@@ -467,23 +467,23 @@ public class JFrame_2Fases extends JFrame {
 		        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		        setVisible(true);
 			}
-			//VAR
-			private void Variables(JPanel newTabComponent,JPanel UY,JPanel Res,int NR) {
-		/*Doc*/	//int VAR=2;
-				for(int i=0;i<VAR;i++) {
+			//nomVariable_indepent
+			private void nomVariable_indepentiables(JPanel newTabComponent,JPanel UY,JPanel Res,int numberRestriction) {
+		/*Doc*/	//int nomVariable_indepent=2;
+				for(int i=0;i<nomVariable_indepent;i++) {
 					JTextField J=new JTextField(12);
 					TextPrompt placeholder = new TextPrompt("Ingrese el Coeficiente", J);
 				    placeholder.changeAlpha(0.75f);
 				    placeholder.changeStyle(Font.ITALIC);
 					JLabel L;
-					if(i==(VAR-1)) {
+					if(i==(nomVariable_indepent-1)) {
 						L=new JLabel("<html>X<sub>"+(i+1)+"</sub></html>");	
 					}
 					else {
 						L=new JLabel("<html>X<sub>"+(i+1)+"</sub>&emsp;+</html>");
 					}
 					
-					if(NR==0) {
+					if(numberRestriction==0) {
 						newTabComponent.add(J);
 						Objetivo.add(J);
 						
@@ -507,14 +507,14 @@ public class JFrame_2Fases extends JFrame {
 			    placeholder2.changeAlpha(0.75f);
 			    placeholder2.changeStyle(Font.ITALIC);
 				
-				if(NR!=0) {
+				if(numberRestriction!=0) {
 					Coeficiente.add(J);
 					Res.add(x);
 					Res.add(J);
 					Simbolo.add(x);
 				}
 				
-				newTabComponent.setPreferredSize(new Dimension(200,(getSize().height*VAR)));
+				newTabComponent.setPreferredSize(new Dimension(200,(getSize().height*nomVariable_indepent)));
 				
 				JScrollPane scrollPane = new JScrollPane();
 				scrollPane.setBorder(null);
