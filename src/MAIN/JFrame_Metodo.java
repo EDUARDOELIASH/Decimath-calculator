@@ -27,6 +27,7 @@ import GUI.JFrame_Hungaro;
 import GUI.JFrame_Simplex;
 import GUI.JFrame_Vogel;
 import GUI.JPanel_Start;
+import GUI.JButton_transparent;
 import validaciones.variables_independientes;
 
 
@@ -163,26 +164,8 @@ public class JFrame_Metodo extends JFrame implements ActionListener {
 		
 		//5. Creacion de Botones de Accion y propiedades
 		
-		Btn_ProgramacionLineal = new JButton("Tema 1: Programacion Lineal");
-		Btn_MetodosTransporte = new JButton("<html>Tema 2: Metodos de Transporte<br>&emsp;&emsp;&emsp;&emsp;y Asignacion</br></html>");
-
-		
-		Btn_ProgramacionLineal.setHorizontalTextPosition(SwingConstants.CENTER);
-		Btn_ProgramacionLineal.setFocusPainted(false);
-		Btn_ProgramacionLineal.setContentAreaFilled(false);
-		Btn_ProgramacionLineal.setBorderPainted(false);
-		Btn_ProgramacionLineal.setOpaque(false);
-		Btn_ProgramacionLineal.setFont(new Font("Arial", Font.ITALIC, 21));
-		Btn_ProgramacionLineal.setBackground(new Color(c.getRed(), c.getGreen(), c.getBlue()));
-		
-		
-		Btn_MetodosTransporte.setHorizontalTextPosition(SwingConstants.CENTER);
-		Btn_MetodosTransporte.setFocusPainted(false);
-		Btn_MetodosTransporte.setBorderPainted(false);
-		Btn_MetodosTransporte.setContentAreaFilled(false);
-		Btn_MetodosTransporte.setOpaque(false);
-		Btn_MetodosTransporte.setFont(new Font("Arial", Font.ITALIC, 21));
-		Btn_MetodosTransporte.setBackground(new Color(c.getRed(), c.getGreen(), c.getBlue()));
+		Btn_ProgramacionLineal = new JButton_transparent("Tema 1: Programacion Lineal");
+		Btn_MetodosTransporte = new JButton_transparent("<html>Tema 2: Metodos de Transporte<br>&emsp;&emsp;&emsp;&emsp;y Asignacion</br></html>");
 
 		
 		//6.Agregamos eventos a los botones
@@ -255,7 +238,7 @@ public class JFrame_Metodo extends JFrame implements ActionListener {
                 JButton Btn_MetodosPersonalizados = null;
                 switch(i) {
                     case 0:		
-                        Btn_MetodosPersonalizados = new JButton("Metodo Grafico");
+                        Btn_MetodosPersonalizados= new JButton_transparent("Metodo Grafico");
                         Btn_MetodosPersonalizados.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent arg0) {
@@ -263,7 +246,7 @@ public class JFrame_Metodo extends JFrame implements ActionListener {
                         }});
                         break;
                     case 1:		
-                        Btn_MetodosPersonalizados = new JButton("Metodo Simplex");
+                        Btn_MetodosPersonalizados = new JButton_transparent("Metodo Simplex");
                         Btn_MetodosPersonalizados.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent arg0) {
@@ -271,7 +254,7 @@ public class JFrame_Metodo extends JFrame implements ActionListener {
                         }});
                         break;
                     case 2:		
-                        Btn_MetodosPersonalizados = new JButton("Metodo Dos Fases");
+                        Btn_MetodosPersonalizados = new JButton_transparent("Metodo Dos Fases");
                         Btn_MetodosPersonalizados.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent arg0) {
@@ -279,14 +262,6 @@ public class JFrame_Metodo extends JFrame implements ActionListener {
                         }});
                         break;
                 }
-                Btn_MetodosPersonalizados.setHorizontalTextPosition(SwingConstants.CENTER);
-
-                Btn_MetodosPersonalizados.setFocusPainted(false);
-                Btn_MetodosPersonalizados.setBorderPainted(false);
-                Btn_MetodosPersonalizados.setContentAreaFilled(false);
-                Btn_MetodosPersonalizados.setOpaque(false);
-                Btn_MetodosPersonalizados.setFont(new Font("Arial", Font.ITALIC, 21));
-                Btn_MetodosPersonalizados.setBackground(new Color(c.getRed(), c.getGreen(), c.getBlue()));
 
                 JP_Metodos.add(Btn_MetodosPersonalizados);
         }
@@ -297,7 +272,7 @@ public class JFrame_Metodo extends JFrame implements ActionListener {
             JButton Btn_MetodosPersonalizados = null;
             switch(i) {
                 case 0:		
-                    Btn_MetodosPersonalizados = new JButton("Metodo Vogel");
+                    Btn_MetodosPersonalizados = new JButton_transparent("Metodo Vogel");
                     Btn_MetodosPersonalizados.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent arg0) {
@@ -305,7 +280,7 @@ public class JFrame_Metodo extends JFrame implements ActionListener {
                     }});
                     break;
 	            case 1:		
-                    Btn_MetodosPersonalizados = new JButton("Metodo MODI");
+                    Btn_MetodosPersonalizados = new JButton_transparent("Metodo MODI");
                     Btn_MetodosPersonalizados.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent arg0) {
@@ -313,7 +288,7 @@ public class JFrame_Metodo extends JFrame implements ActionListener {
                     }});
                     break;
 	            case 2:		
-                    Btn_MetodosPersonalizados = new JButton("Metodo Hungaro");
+                    Btn_MetodosPersonalizados = new JButton_transparent("Metodo Hungaro");
                     Btn_MetodosPersonalizados.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent arg0) {
@@ -321,15 +296,7 @@ public class JFrame_Metodo extends JFrame implements ActionListener {
                     }});
                     break;
             }
-            Btn_MetodosPersonalizados.setHorizontalTextPosition(SwingConstants.CENTER);					
-            Btn_MetodosPersonalizados.setFocusPainted(false);
-            Btn_MetodosPersonalizados.setBorderPainted(false);
-            Btn_MetodosPersonalizados.setContentAreaFilled(false);
-            Btn_MetodosPersonalizados.setOpaque(false);
-            Btn_MetodosPersonalizados.setFont(new Font("Arial", Font.ITALIC, 21));
-            Btn_MetodosPersonalizados.setBackground(new Color(c.getRed(), c.getGreen(), c.getBlue()));
-
-          //  Botones.add(Btn_MetodosPersonalizados);
+          
             JP_Metodos.add(Btn_MetodosPersonalizados);
         }
     }
@@ -361,11 +328,20 @@ public class JFrame_Metodo extends JFrame implements ActionListener {
 	
 	public void Metodo_2Fases() {
 		initUnit1();
-        dispose();
+		JPanel JP_Metodo_2Fases=new JFrame_2Fases(NR,VAR);
+		JP_BG_IMG.removeAll();
+        JP_BG_IMG.add(JP_Metodo_2Fases, BorderLayout.CENTER);
+        
+        JP_BG_IMG.revalidate();
+        JP_BG_IMG.repaint();
+        
+        JOptionPane.showMessageDialog(null,"Tema 2: Metodos de Transporte y Asignacion","Seleccion de Metodo",JOptionPane.INFORMATION_MESSAGE);
+
+        /*dispose();
         JFrame_2Fases startMethod_2Fases=new JFrame_2Fases(NR,VAR);
         startMethod_2Fases.setResizable(true);
         startMethod_2Fases.setLocationRelativeTo(null);
-        startMethod_2Fases.setVisible(true);
+        startMethod_2Fases.setVisible(true);*/
     }
 	
     //Obtencion de Variables Independientes Tema 2

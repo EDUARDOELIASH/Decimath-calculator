@@ -39,7 +39,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
-public class JFrame_2Fases extends JFrame {
+public class JFrame_2Fases extends JPanel {
 	int nomVariable_indepent,numberRestriction;
 	private static final long serialVersionUID = 1L;
 	private ArrayList<JButton> Botones;
@@ -52,7 +52,7 @@ public class JFrame_2Fases extends JFrame {
 	private ArrayList<JPanel> G;
 	public JComboBox z;
 	
-	private JPanel contentPane;
+//	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -76,15 +76,16 @@ public class JFrame_2Fases extends JFrame {
 		
 		z=new JComboBox();
 
-		setIconImage(Toolkit.getDefaultToolkit().getImage(JFrame_Metodo.class.getResource("/Imagenes/mathematic-calculator.png")));
-		setTitle("Matematicas para la Toma de Decisiones");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(JFrame_Metodo.class.getResource("/Imagenes/mathematic-calculator.png")));
+		//setTitle("Matematicas para la Toma de Decisiones");
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 850, 550);
 		setMinimumSize(new Dimension(850,550));
-		contentPane = new JPanel_Start();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+		setOpaque(false);
+		//contentPane = new JPanel_Start();
+		
+		setLayout(new BorderLayout(0, 0));
+		//add(contentPane);
 		
 		JPanel Panel_Central = new JPanel();
 		Panel_Central.setOpaque(false);
@@ -240,7 +241,7 @@ public class JFrame_2Fases extends JFrame {
 						}
 					}
                                         restriccionI = ladoDerechoNN(restriccionI, nomVariable_indepent, numberRestriction, SimbolosFN);
-					dispose();
+					//xd  dispose();
 					int Sigma=numberRestriction+nomVariable_indepent;
                                         //System.out.println(numberRestriction + " " + nomVariable_indepent);
 					//double nomVariable_indepentdecision[], char OBJETIVO, double restriccionI[][],String SimboloFN[]
@@ -384,7 +385,8 @@ public class JFrame_2Fases extends JFrame {
 		Btn_Res.setAlignmentX(Component.CENTER_ALIGNMENT);
 		Btn_Res.setActionCommand("<html><p align=\"center\">Agregar  <br/>Restriccion</p></html>");
 		Btn_Res.setBounds(0, 0, 53, 29);
-		contentPane.add(Btn_Res);
+		add(Btn_Res);
+		//contentPane.add(Btn_Res);
 		Btn_Res.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 		/*Doc*/	//int numberRestriction=5;
@@ -464,7 +466,7 @@ public class JFrame_2Fases extends JFrame {
 		            G.add(UY);
 				}
 				//tabbedPane.addTab("Restricciones"+i, R);
-		        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		      //xdd  setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		        setVisible(true);
 			}
 			//nomVariable_indepent
@@ -555,7 +557,8 @@ public class JFrame_2Fases extends JFrame {
 	    viewport.setOpaque(false);
 	    scrollPane.setViewport(viewport);
 	    scrollPane.getViewport().setOpaque(false);
-		contentPane.add(scrollPane, BorderLayout.CENTER);
+		//contentPane.add(scrollPane, BorderLayout.CENTER);
+	    add(scrollPane, BorderLayout.CENTER);
 	}
 }
 
