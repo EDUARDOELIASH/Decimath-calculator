@@ -40,6 +40,7 @@ import javax.swing.border.EmptyBorder;
 import MetodoGrafico.ListaPuntosPoligono;
 import MetodoGrafico.PuntosGr;
 import metodoSimplex.DatosSimplex;
+import objects.TextPrompt;
 import MetodoGrafico.principalGrafico;
 
 public class JFrame_Grafico extends JFrame{

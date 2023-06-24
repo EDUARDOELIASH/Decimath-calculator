@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 //Paquete.clase
 import metodoSimplex.DatosSimplex;
 import metodohungaro.DatosHungaro;
+import objects.TextPrompt;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;

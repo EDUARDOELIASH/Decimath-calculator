@@ -16,7 +16,6 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 //clases del proyecto
@@ -27,7 +26,7 @@ import GUI.JFrame_Hungaro;
 import GUI.JFrame_Simplex;
 import GUI.JFrame_Vogel;
 import GUI.JPanel_Start;
-import GUI.JButton_transparent;
+import objects.JButton_transparent;
 import validaciones.variables_independientes;
 
 
@@ -268,37 +267,42 @@ public class JFrame_Metodo extends JFrame implements ActionListener {
     }
     public void updateUI_Unit2() {
         //Sub Botones
-        for(int i=0;i<3;i++) {
-            JButton Btn_MetodosPersonalizados = null;
-            switch(i) {
-                case 0:		
-                    Btn_MetodosPersonalizados = new JButton_transparent("Metodo Vogel");
-                    Btn_MetodosPersonalizados.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent arg0) {
-                        Metodo_Vogel();
-                    }});
-                    break;
-	            case 1:		
-                    Btn_MetodosPersonalizados = new JButton_transparent("Metodo MODI");
-                    Btn_MetodosPersonalizados.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent arg0) {
-                        Metodo_MODI();
-                    }});
-                    break;
-	            case 2:		
-                    Btn_MetodosPersonalizados = new JButton_transparent("Metodo Hungaro");
-                    Btn_MetodosPersonalizados.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent arg0) {
-                        Metodo_Hungaro();
-                    }});
-                    break;
-            }
-          
-            JP_Metodos.add(Btn_MetodosPersonalizados);
-        }
+    	String[] nombresMetodos = {"Metodo Vogel", "Metodo MODI", "Metodo Hungaro"};
+
+    	for (int i = 0; i < nombresMetodos.length; i++) {
+    	    JButton Btn_MetodosPersonalizados = new JButton_transparent(nombresMetodos[i]);
+    	    ActionListener actionListener = null;
+    	    
+    	    switch (i) {
+    	        case 0:
+    	            actionListener = new ActionListener() {
+    	                @Override
+    	                public void actionPerformed(ActionEvent arg0) {
+    	                    Metodo_Vogel();
+    	                }
+    	            };
+    	            break;
+    	        case 1:
+    	            actionListener = new ActionListener() {
+    	                @Override
+    	                public void actionPerformed(ActionEvent arg0) {
+    	                    Metodo_MODI();
+    	                }
+    	            };
+    	            break;
+    	        case 2:
+    	            actionListener = new ActionListener() {
+    	                @Override
+    	                public void actionPerformed(ActionEvent arg0) {
+    	                    Metodo_Hungaro();
+    	                }
+    	            };
+    	            break;
+    	    }
+    	    
+    	    Btn_MetodosPersonalizados.addActionListener(actionListener);
+    	    JP_Metodos.add(Btn_MetodosPersonalizados);
+    	}
     }
 	
     //Obtencion de Variables Independientes del Tema 1
@@ -335,7 +339,7 @@ public class JFrame_Metodo extends JFrame implements ActionListener {
         JP_BG_IMG.revalidate();
         JP_BG_IMG.repaint();
         
-        JOptionPane.showMessageDialog(null,"Tema 2: Metodos de Transporte y Asignacion","Seleccion de Metodo",JOptionPane.INFORMATION_MESSAGE);
+//        JOptionPane.showMessageDialog(null,"Tema 2: Metodos de Transporte y Asignacion","Seleccion de Metodo",JOptionPane.INFORMATION_MESSAGE);
 
         /*dispose();
         JFrame_2Fases startMethod_2Fases=new JFrame_2Fases(NR,VAR);
@@ -376,10 +380,9 @@ public class JFrame_Metodo extends JFrame implements ActionListener {
 	
 	
     public void Metodo_MODI(){
-        initUnit2();
-        dispose();
-
     	caso = varind.optionMODI();
+    	initUnit2();
+        dispose();
         
 		switch (caso) {
 		case 1:
