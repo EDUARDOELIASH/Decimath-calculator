@@ -145,7 +145,7 @@ public class JFrame_Metodo extends JFrame implements ActionListener {
 		lbl_Titulo_Instruccion.setBorder(new EmptyBorder(topPadding, leftPadding, bottomPadding, rightPadding));
 		
 		
-		//4. Creacion de contenedores de margen dentro del grid JP_Margen
+		//4. Creacion de contenedores de margen dentro del grid para Margen
 		
 		JTextField txt_undeploy_grid;
 		JTextField txt_undisplay_grid;

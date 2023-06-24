@@ -1,7 +1,6 @@
 package objects;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ import javax.swing.JViewport;
 public class JTabbedPane_create_tabs{
 	int numberRestriction , nomVariable_indepent;
 	
-	public ArrayList<JComboBox> Simbolo = new ArrayList<JComboBox>();
+	public ArrayList<JComboBox<String>> Simbolo = new ArrayList<JComboBox<String>>();
 	public ArrayList<JTextField> Objetivo=new ArrayList<JTextField>();
 	//public ArrayList<JPanel> Nuevo;
 	//public ArrayList<JPanel> NuevoPanel2;
@@ -31,7 +30,7 @@ public class JTabbedPane_create_tabs{
 	}
 	
 	
-	public JTabbedPane create_tabs(JTabbedPane tabbedPane, JComboBox comboBox_option) {
+	public JTabbedPane create_tabs(JTabbedPane tabbedPane, JComboBox<String> comboBox_option) {
 		
 		/*Doc*/	//int numberRestriction=5;
 		for(int i=0;i<=numberRestriction;i++) {
@@ -48,6 +47,8 @@ public class JTabbedPane_create_tabs{
 			
 			//Resultado y Simbolo
 			JPanel Res = new JPanel();
+			Res.setLayout(new GridLayout(0,1,0,0));
+
 			Res.setOpaque(false);
 			//Res.setBackground(new Color(c.getRed(), c.getGreen(), c.getBlue()));
 
@@ -106,10 +107,10 @@ public class JTabbedPane_create_tabs{
 		}
 		
 		
-		JComboBox x=new JComboBox();
+		JComboBox<String> x=new JComboBox<String>();
 		x.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		//Se crea un Array del ComboBox que relaciona, Si el Usuario tiene Autorizacion de Acceder Al Programa
-		x.setModel(new DefaultComboBoxModel(new String[] {"Seleccione Un Simbolo:", "<=", ">=", "="}));
+		x.setModel(new DefaultComboBoxModel<String>(new String[] {"Seleccione Un Simbolo:", "<=", ">=", "="}));
 		//newTabComponent.add(x);
 		JTextField J=new JTextField(12);
 		TextPrompt placeholder2 = new TextPrompt("Ingrese el Resultado", J);

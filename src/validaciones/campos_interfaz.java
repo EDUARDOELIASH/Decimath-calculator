@@ -47,7 +47,7 @@ public class campos_interfaz {
 	    return nomVariable_indepentdecision;
 	}
 	
-	public double[][] RecorrerArray(int nomVariable_indepent,int numberRestriction,ArrayList<JTextField> coeficiente, ArrayList<JComboBox> simbolo) {
+	public double[][] RecorrerArray(int nomVariable_indepent,int numberRestriction,ArrayList<JTextField> coeficiente, ArrayList<JComboBox<String>> simbolo) {
 		double[][] restriccionI = new double[numberRestriction][nomVariable_indepent+1];
 		int j=0;
 		//JOptionPane.showMessageDialog(null,coeficiente.size(),"",JOptionPane.INFORMATION_MESSAGE);
@@ -90,11 +90,11 @@ public class campos_interfaz {
 		return restriccionI;
 	}
 	
-	public int [] simbolo(int numberRestriction,ArrayList<JComboBox> Simbolo) {
+	public int [] simbolo(int numberRestriction,ArrayList<JComboBox<String>> Simbolo) {
 		int[] simbolo = new int [numberRestriction];
 		//boolean simb=true;
 		for(int i=0;i<numberRestriction;i++) {
-			JComboBox Sim = Simbolo.get(i);
+			JComboBox<String> Sim = Simbolo.get(i);
 			if(Sim.getSelectedIndex()!=0) {
 				simbolo[i]=Sim.getSelectedIndex();
 			}
